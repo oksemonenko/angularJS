@@ -5,19 +5,22 @@
 </head>
 <body>
 <div ng-controller="itemController">
-  <label>Sort:
-    <input type="checkbox" id="filter" ng-model="item" ng-change="check()">
-  </label>
-  <ul>
-    <li ng-repeat="item in items | orderBy:sortparam">
-      <p>Имя: {{item.name}}</p>
-      <!--<p>Свойства: {{item.flags[0]}}</p>-->
-      <!--<p ng-bind="item.flags[0]"></p>-->
-      <!--<p ng-bind="item.flags[1]"></p>-->
-      <!--<p ng-bind="item.flags[2]"></p>-->
-      <!--<p ng-bind="item.flags[3]"></p>-->
-    </li>
-  </ul>
+  <div class="sort-1">
+    <label>Sort:
+      <input type="checkbox" id="filter" ng-model="item" ng-change="check()">
+    </label>
+    <input type="text" ng-model="name" placeholder="Text filter">
+    <ul>
+      <li ng-repeat="item in items | orderBy:sortparam | filter:{name}">
+        <p>Имя: {{item.name}}</p>
+        <!--<p>Свойства: {{item.flags[0]}}</p>-->
+        <!--<p ng-bind="item.flags[0]"></p>-->
+        <!--<p ng-bind="item.flags[1]"></p>-->
+        <!--<p ng-bind="item.flags[2]"></p>-->
+        <!--<p ng-bind="item.flags[3]"></p>-->
+      </li>
+    </ul>
+  </div>
 </div>
 <!--<div ng-controller="itemController">-->
   <!--<p style="color: red">Название: {{item.name}}</p>-->

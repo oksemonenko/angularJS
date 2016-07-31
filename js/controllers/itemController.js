@@ -32,6 +32,10 @@ myApp.controller('itemController', function($scope) {
 		{
 			name: "rabbit",
 			flags: ["flower", "heart", "sun", "flash"]
+		},
+		{
+			name: "crocodile",
+			flags: ["flower", "heart", "sun", "flash"]
 		}
 	];
 	//
