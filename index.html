@@ -127,16 +127,24 @@
 <body>
 <div ng-controller="WineCtrl as ctrl">
   <h3>Categories</h3>
-  <div ng-repeat="category in ctrl.getCategories()">
+  <div class="category" ng-repeat="category in ctrl.getCategories()">
     <label>
-      <input type="checkbox" ng-model="ctrl.filter[category]" />
+      <input type="checkbox" ng-model="ctrl.filterCategory[category]" />
       {{ category }}
     </label>
   </div>
   <hr />
+  <div class="country" ng-repeat="country in ctrl.getCountries()">
+    <label>
+      <input type="checkbox" ng-model="ctrl.filterCountry[country]" />
+      {{ country }}
+    </label>
+  </div>
+  <hr />
   <h3>Available Wines</h3>
-  <div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategory) as filteredWines">
+  <div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategoryAndCountry) as filteredWines">
     {{ wine.name }} <i>({{ wine.category }})</i>
+    <b>{{ wine.country }}</b>
   </div>
   <hr />
   <b>Number of results: {{ filteredWines.length }}</b>

@@ -78,31 +78,52 @@
 		var self = this;
 
 		// Variables - Public
-		self.filter = {};
+		self.filterCategory = {};
+		self.filterCountry = {};
 		self.wines = [
-			{name: 'Wine A', category: 'red'},
-			{name: 'Wine B', category: 'red'},
-			{name: 'Wine C', category: 'white'},
-			{name: 'Wine D', category: 'red'},
-			{name: 'Wine E', category: 'red'},
-			{name: 'Wine F', category: 'white'},
-			{name: 'Wine G', category: 'champagne'},
-			{name: 'Wine H', category: 'champagne'}
+			{name: 'Wine A', category: 'red', country: 'champagne'},
+			{name: 'Wine B', category: 'red', country: 'France'},
+			{name: 'Wine C', category: 'white',  country: 'Italy'},
+			{name: 'Wine D', category: 'red',  country: 'Italy'},
+			{name: 'Wine E', category: 'red',  country: 'Italy'},
+			{name: 'Wine F', category: 'white',  country: 'France'},
+			{name: 'Wine G', category: 'champagne',  country: 'France'},
+			{name: 'Wine H', category: 'champagne',  country: 'Italy'}
 		];
 
 		// Functions - Public
 		self.filterByCategory = filterByCategory;
 		self.getCategories = getCategories;
 
+		self.getCountries = getCountries;
+		self.filterByCategoryAndCountry = filterByCategoryAndCountry;
+		// self.filterByCountry = filterByCountry;
+
 		// Functions - Definitions
 		function filterByCategory(wine) {
-			return self.filter[wine.category] || noFilter(self.filter);
+			return self.filterCategory[wine.category] || noFilter(self.filterCategory);
 		}
+
+		function filterByCategoryAndCountry(wine) {
+			return (self.filterCategory[wine.category] || noFilter(self.filterCategory)) &&
+					(self.filterCountry[wine.country] || noFilter(self.filterCountry));
+		}
+
+		// function filterByCountry(wine) {
+		// 	return self.filterCountry[wine.country] || noFilter(self.filterCountry);
+		// }
 
 		function getCategories() {
 			return (self.wines || []).
 			map(function (wine) { return wine.category; }).
 			filter(function (cat, idx, arr) { return arr.indexOf(cat) === idx; });
+		}
+
+		//Добавляет чекбоксы с названием страны
+		function getCountries() {
+			return (self.wines || []).
+			map(function (wine) { return wine.country; }).
+			filter(function (con, idx, arr) { return arr.indexOf(con) === idx; });
 		}
 
 		function noFilter(filterObj) {
