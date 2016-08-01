@@ -1,75 +1,162 @@
+<!--<!doctype html>-->
+<!--<html ng-app="myApp">-->
+<!--<head>-->
+  <!--<meta charset="utf-8">-->
+  <!--<link rel="stylesheet" href="css/style.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="app" ng-controller="itemController">-->
+  <!--<div class="sort-1">-->
+    <!--<label>Sort:-->
+      <!--<input type="checkbox" id="sort" ng-model="item" ng-change="check()">-->
+    <!--</label>-->
+    <!--<input type="text" ng-model="name" placeholder="Text filter">-->
+    <!--<ul>-->
+      <!--<li ng-repeat="item in items | orderBy:sortparam | filter:{name}">-->
+        <!--<p>Имя: {{item.name}}</p>-->
+        <!--&lt;!&ndash;<p>Свойства: {{item.flags[0]}}</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[0]"></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[1]"></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[2]"></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[3]"></p>&ndash;&gt;-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div class="app" ng-controller="filterController as Ctrl">-->
+  <!--<div class="sort-2">-->
+    <!--Filters:-->
+    <!--<label>-->
+      <!--Flower-->
+      <!--<input type="checkbox" id="filter-flower" name="filter-flower" ng-model="item" ng-change="getFilteredItems()">-->
+    <!--</label>-->
+    <!--<label>-->
+      <!--Sun-->
+      <!--<input type="checkbox" id="filter-sun" name="filter-sun" ng-model="item.flags[1]">-->
+    <!--</label>-->
+    <!--<label>-->
+      <!--Heart-->
+      <!--<input type="checkbox" id="filter-heart" name="filter-heart" ng-model="item.flags[2]">-->
+    <!--</label>-->
+    <!--<label>-->
+      <!--Flash-->
+      <!--<input type="checkbox" id="filter-flash" name="filter-flash" ng-model="item.flags[3]">-->
+    <!--</label>-->
+    <!--<ul>-->
+      <!--<li ng-repeat="item in items">-->
+        <!--<p>Имя: {{item.name}}</p>-->
+        <!--<p ng-repeat="flag in item.flags">-->
+          <!--<p>{{item.flags[0]}}</p>-->
+          <!--<p>{{item.flags[1]}}</p>-->
+          <!--<p>{{item.flags[2]}}</p>-->
+          <!--<p>{{item.flags[3]}}</p>-->
+        <!--</p>-->
+        <!--&lt;!&ndash;<p>Свойства: {{item.flags[0]}}</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[0]"></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[1]"></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[2]"></p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p ng-bind="item.flags[3]"></p>&ndash;&gt;-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;<div ng-controller="itemController">&ndash;&gt;-->
+  <!--&lt;!&ndash;<p style="color: red">Название: {{item.name}}</p>&ndash;&gt;-->
+  <!--&lt;!&ndash;<div ng-controller="itemController">&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>Название: {{item.name}}</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>Цена: {{item.flags[2]}}</p>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<script src="js/lib/angular.min.js"></script>-->
+<!--<script type="text/javascript">-->
+  <!--angular.module('myApp', []);-->
+<!--</script>-->
+<!--<script src="js/controllers/itemController.js"></script>-->
+<!--<script src="js/controllers/filterController.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--<!doctype html>-->
+<!--<html ng-app="myApp">-->
+<!--<head>-->
+  <!--<meta charset="utf-8">-->
+  <!--<link rel="stylesheet" href="css/style.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div ng-controller="WineCtrl as ctrl">-->
+  <!--<h3>Categories</h3>-->
+  <!--<div ng-repeat="flags in ctrl.getCategories()">-->
+    <!--<label>-->
+      <!--<input type="checkbox" ng-model="ctrl.filter[flags]" />-->
+      <!--{{ flags }}-->
+    <!--</label>-->
+  <!--</div>-->
+  <!--Filters:-->
+  <!--<label>-->
+    <!--Flower-->
+    <!--<input type="checkbox" id="filter-flower" name="filter-flower" ng-model="ctrl.filter[flags]">-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--Sun-->
+    <!--<input type="checkbox" id="filter-sun" name="filter-sun" ng-model="item.flags[1]">-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--Heart-->
+    <!--<input type="checkbox" id="filter-heart" name="filter-heart" ng-model="item.flags[2]">-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--Flash-->
+    <!--<input type="checkbox" id="filter-flash" name="filter-flash" ng-model="item.flags[3]">-->
+  <!--</label>-->
+  <!--<hr />-->
+  <!--<h3>Available Wines</h3>-->
+  <!--<div ng-repeat="item in (ctrl.items | filter:ctrl.filterByCategory) as filteredWines">-->
+    <!--{{ item.name }} <i>({{ item.flags }})</i>-->
+  <!--</div>-->
+  <!--<hr />-->
+  <!--<b>Number of results: {{ filteredWines.length }}</b>-->
+<!--</div>-->
+
+
 <!doctype html>
 <html ng-app="myApp">
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div ng-controller="itemController">
-  <div class="sort-1">
-    <label>Sort:
-      <input type="checkbox" id="filter" ng-model="item" ng-change="check()">
+<div ng-controller="WineCtrl as ctrl">
+  <h3>Categories</h3>
+  <div ng-repeat="category in ctrl.getCategories()">
+    <label>
+      <input type="checkbox" ng-model="ctrl.filter[category]" />
+      {{ category }}
     </label>
-    <input type="text" ng-model="name" placeholder="Text filter">
-    <ul>
-      <li ng-repeat="item in items | orderBy:sortparam | filter:{name}">
-        <p>Имя: {{item.name}}</p>
-        <!--<p>Свойства: {{item.flags[0]}}</p>-->
-        <!--<p ng-bind="item.flags[0]"></p>-->
-        <!--<p ng-bind="item.flags[1]"></p>-->
-        <!--<p ng-bind="item.flags[2]"></p>-->
-        <!--<p ng-bind="item.flags[3]"></p>-->
-      </li>
-    </ul>
   </div>
+  <hr />
+  <h3>Available Wines</h3>
+  <div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategory) as filteredWines">
+    {{ wine.name }} <i>({{ wine.category }})</i>
+  </div>
+  <hr />
+  <b>Number of results: {{ filteredWines.length }}</b>
 </div>
-<!--<div ng-controller="itemController">-->
-  <!--<p style="color: red">Название: {{item.name}}</p>-->
-  <!--<div ng-controller="itemController">-->
-    <!--<p>Название: {{item.name}}</p>-->
-    <!--<p>Цена: {{item.flags[2]}}</p>-->
-  <!--</div>-->
-<!--</div>-->
 <script src="js/lib/angular.min.js"></script>
-<script type="text/javascript">
-  angular.module('myApp', []);
-</script>
-<script src="js/controllers/itemController.js">
-</script>
+<script src="js/controllers/WineCtrl.js"></script>
 </body>
 </html>
 
 <!--<!doctype html>-->
-<!--<html ng-app='myApp'>-->
+<!--<html ng-app="app">-->
 <!--<head>-->
   <!--<meta charset="utf-8">-->
-  <!--<link rel="stylesheet" href="css/style.css" />-->
+  <!--<link rel="stylesheet" href="css/style.css">-->
 <!--</head>-->
-<!--<body>-->
-<!--<div  ng-controller="QuestionController">-->
-  <!--<div class="quest" ng-class="questColorClass"-->
-       <!--ng-mouseenter="changeClass($event)"-->
-       <!--ng-mouseleave="changeClass($event)">-->
-    <!--<h3>{{question.text}}</h3>-->
-    <!--<p>{{question.author}} </p> <p><i>{{question.date}}</i></p>-->
-  <!--</div>-->
-  <!--<h3>Ответы</h3>-->
-  <!--<div class="answers">-->
-    <!--<div ng-repeat="answer in question.answers" class="answer">-->
-      <!--<div class="vote">-->
-        <!--<a class="vote-up" ng-click="voteUp(answer)"></a>-->
-        <!--<span class="rate">{{answer.rate}}</span>-->
-        <!--<a class="vote-down" ng-click="voteDown(answer)"></a>-->
-      <!--</div>-->
-      <!--<b>{{answer.text}}</b>-->
-      <!--<p>{{answer.author}}</p>-->
-      <!--<p><i>{{answer.date}}</i></p>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
+<!--<body ng-controller="Ctrl3">-->
+<!--<label ng-repeat="role in roles">-->
+  <!--<input type="checkbox" data-checklist-model="user.roles" data-checklist-value="role"> {{role.text}}-->
+<!--</label>-->
 <!--<script src="js/lib/angular.min.js"></script>-->
-<!--<script type="text/javascript">-->
-  <!--var myApp = angular.module('myApp', []);-->
-<!--</script>-->
-<!--<script src="js/controllers/QuestionController.js"></script>-->
+<!--<script src="js/controllers/Ctrl3.js"></script>-->
 <!--</body>-->
 <!--</html>-->
