@@ -134,15 +134,15 @@
     </label>
   </div>
   <hr />
-  <div class="country" ng-repeat="country in ctrl.getCountries()">
-    <label>
-      <input type="checkbox" ng-model="ctrl.filterCountry[country]" />
-      {{ country }}
-    </label>
-  </div>
-  <hr />
+  <!--<div class="country" ng-repeat="country in ctrl.getCountries()">-->
+    <!--<label>-->
+      <!--<input type="checkbox" ng-model="ctrl.filterCountry[country]" />-->
+      <!--{{ country }}-->
+    <!--</label>-->
+  <!--</div>-->
+  <!--<hr />-->
   <h3>Available Wines</h3>
-  <div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategoryAndCountry) as filteredWines">
+  <div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategory) as filteredWines">
     {{ wine.name }} <i>({{ wine.category }})</i>
     <b>{{ wine.country }}</b>
   </div>

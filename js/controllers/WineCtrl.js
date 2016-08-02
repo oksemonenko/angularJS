@@ -112,7 +112,11 @@
 
 		// Functions - Definitions
 		function filterByCategory(wine) {
-			return self.filterCategory[wine.category] || noFilter(self.filterCategory);
+			return self.filterCategory[wine.category[0]] ||
+						 self.filterCategory[wine.category[1]] ||
+						 self.filterCategory[wine.category[2]] ||
+						 self.filterCategory[wine.category[3]] ||
+						 noFilter(self.filterCategory);
 		}
 
 		// function filterByCategoryAndCountry(wine) {
