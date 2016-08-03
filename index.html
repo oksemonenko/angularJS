@@ -22,38 +22,38 @@
       </li>
     </ul>
   </div>
-  <!--<div>{{msg}}</div>-->
+  <div>{{ctrl.msg}}</div>
 </div>
-<!--<div ng-controller="WineCtrl as ctrl">-->
-  <!--<h3>Categories</h3>-->
-  <!--<div class="category" ng-repeat="category in ctrl.getCategories()">-->
-    <!--<label>-->
-      <!--<input type="checkbox" ng-model="ctrl.filterCategory[category]" />-->
-      <!--{{ category }}-->
-    <!--</label>-->
+<div ng-controller="WineCtrl as ctrl">
+  <h3>Categories</h3>
+  <div class="category" ng-repeat="category in ctrl.getCategories()">
+    <label>
+      <input type="checkbox" ng-model="ctrl.filterCategory[category]" />
+      {{ category }}
+    </label>
+  </div>
+  <hr />
+  <!--<div class="country" ng-repeat="country in ctrl.getCountries()">-->
+  <!--<label>-->
+  <!--<input type="checkbox" ng-model="ctrl.filterCountry[country]" />-->
+  <!--{{ country }}-->
+  <!--</label>-->
   <!--</div>-->
   <!--<hr />-->
-  <!--&lt;!&ndash;<div class="country" ng-repeat="country in ctrl.getCountries()">&ndash;&gt;-->
-  <!--&lt;!&ndash;<label>&ndash;&gt;-->
-  <!--&lt;!&ndash;<input type="checkbox" ng-model="ctrl.filterCountry[country]" />&ndash;&gt;-->
-  <!--&lt;!&ndash;{{ country }}&ndash;&gt;-->
-  <!--&lt;!&ndash;</label>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--&lt;!&ndash;<hr />&ndash;&gt;-->
-  <!--<h3>Available Wines</h3>-->
-  <!--<div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategory) as filteredWines">-->
-    <!--<div ng-click="clickWine(wine)">-->
-      <!--{{ wine.name }} <i>({{ wine.category }})</i>-->
-      <!--<b>{{ wine.country }}</b>-->
+  <h3>Available Wines</h3>
+  <div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategory) as filteredWines">
+    <div ng-click="clickWine(wine)">
+      {{ wine.name }} <i>({{ wine.category }})</i>
+      <b>{{ wine.country }}</b>
+    </div>
+    <!--<div ng-show="showBlock">-->
+    <!--{{ wine.name }}-->
     <!--</div>-->
-    <!--&lt;!&ndash;<div ng-show="showBlock">&ndash;&gt;-->
-    <!--&lt;!&ndash;{{ wine.name }}&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--</div>-->
+  </div>
   <!--<div>{{msg}}</div>-->
-  <!--<hr />-->
-  <!--<b>Number of results: {{ filteredWines.length }}</b>-->
-<!--</div>-->
+  <hr />
+  <b>Number of results: {{ filteredWines.length }}</b>
+</div>
 <!--<div class="app" ng-controller="filterController as Ctrl">-->
   <!--<div class="sort-2">-->
     <!--Filters:-->
@@ -96,7 +96,7 @@
   <!--angular.module('myApp', []);-->
 <!--</script>-->
 <script src="js/controllers/ItemCtrl.js"></script>
-<!--<script src="js/controllers/WineCtrl.js"></script>-->
+<script src="js/controllers/WineCtrl.js"></script>
 </body>
 </html>
 

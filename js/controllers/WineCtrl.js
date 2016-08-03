@@ -69,7 +69,7 @@
 (function () {'use strict';
 
 	angular.
-	module('myApp', []).
+	module('myApp').
 	controller('WineCtrl', WineCtrl);
 
 // Functions - Definitions
@@ -105,6 +105,8 @@
 		// Functions - Public
 		self.filterByCategory = filterByCategory;
 		self.getCategories = getCategories;
+
+		self.clickWine = clickWine;
 
 		// self.getCountries = getCountries;
 		// self.filterByCategoryAndCountry = filterByCategoryAndCountry;
@@ -165,5 +167,9 @@
 			every(function (key) { return !filterObj[key]; });
 		}
 	}
+
+		function clickWine (wine) {
+			self.msg = wine.name;
+		}
 
 }());
