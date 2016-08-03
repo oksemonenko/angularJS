@@ -8,43 +8,58 @@
 <div class="wrapper" ng-controller="ClickCtrl as mainCtrl">
   <div class="items  items--left" ng-controller="ItemCtrl as ctrl">
     <div class="filters">
-      <label>Sort:
-        <input class="filters__checkbox" type="checkbox" id="sort" ng-model="item" ng-change="ctrl.sortByName()">
-      </label>
-      <input type="text" ng-model="name" placeholder="Text filter">
+      <div class="filters__sort">
+        <input class="filters__checkbox  filters__sort-input" type="checkbox" id="sort" ng-model="item" ng-change="ctrl.sortByName()">
+        <label class="filters__sort-label" for="sort">Sort:</label>
+      </div>
+      <input class="filters__text-input" type="text" ng-model="name" placeholder="Text filter">
     </div>
     <ul class="items__list">
       <li class="items__item" ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="mainCtrl.clickItem(item)">
-        <b>{{item.name}}</b>
-        <div class="flag  flag--{{item.flags[0]}}">{{item.flags[0]}}</div>
-        <div class="flag  flag--{{item.flags[1]}}">{{item.flags[1]}}</div>
-        <div class="flag  flag--{{item.flags[2]}}">{{item.flags[2]}}</div>
-        <div class="flag  flag--{{item.flags[3]}}">{{item.flags[3]}}</div>
+        <b class="items__item-name">{{item.name}}</b>
+        <div class="items__item-flags">
+          <div class="{{item.flags[0]}}">{{item.flags[0]}}</div>
+          <div class="{{item.flags[1]}}">{{item.flags[1]}}</div>
+          <div class="{{item.flags[2]}}">{{item.flags[2]}}</div>
+          <div class="{{item.flags[3]}}">{{item.flags[3]}}</div>
+        </div>
       </li>
     </ul>
   </div>
   <div class="info-box">
-    <h2>{{mainCtrl.info}}</h2>
-    <p>{{mainCtrl.name}}</p>
-    <p>{{mainCtrl.flags}}</p>
+    <h2 class="info-box__title">{{mainCtrl.info}}</h2>
+    <div class="info-box__name">
+      <p class="info-box__text">{{mainCtrl.name}}</p>
+      <p class="info-box__item-name">{{mainCtrl.itemName}}</p>
+    </div>
+    <div class="info-box__flags">
+      <p class="info-box__text">{{mainCtrl.flags}}</p>
+      <div class="info-box__item-flags">
+        <p class="{{mainCtrl.flag1}}">{{mainCtrl.flag1}}</p>
+        <p class="{{mainCtrl.flag2}}">{{mainCtrl.flag2}}</p>
+        <p class="{{mainCtrl.flag3}}">{{mainCtrl.flag3}}</p>
+        <p class="{{mainCtrl.flag4}}">{{mainCtrl.flag4}}</p>
+      </div>
+    </div>
   </div>
   <div class="items  items--right" ng-controller="FlagsCtrl as ctrl">
     <div class="filters">
       <p class="filters__text">Filters:</p>
       <div class="filters__flags" ng-repeat="flag in ctrl.getFlags()">
-        <label class="filters__flag  filters__flag--{{ flag }}">
-          <input class="filters__checkbox" type="checkbox" ng-model="ctrl.filterFlags[flag]">
-          {{ flag }}
-        </label>
+        <input class="filters__checkbox  filters__flag-input  filters__flag-input--{{ flag }}"
+               id="filter-flag--{{ flag }}" type="checkbox" ng-model="ctrl.filterFlags[flag]">
+        <label class="filters__flag  filters__flag--{{ flag }}" for="filter-flag--{{ flag }}">{{ flag }}</label>
       </div>
     </div>
     <ul class="items__list">
       <li class="items__item" ng-repeat="item in (ctrl.items | filter:ctrl.filterByFlags) as filteredItems" ng-click="mainCtrl.clickItem(item)">
-        <b>{{item.name}}</b>
-        <div class="flag  flag--{{item.flags[0]}}">{{item.flags[0]}}</div>
-        <div class="flag  flag--{{item.flags[1]}}">{{item.flags[1]}}</div>
-        <div class="flag  flag--{{item.flags[2]}}">{{item.flags[2]}}</div>
-        <div class="flag  flag--{{item.flags[3]}}">{{item.flags[3]}}</div>
+        <b class="items__item-name">{{item.name}}</b>
+        <div class="items__item-flags">
+          <div class="{{item.flags[0]}}">{{item.flags[0]}}</div>
+          <div class="{{item.flags[1]}}">{{item.flags[1]}}</div>
+          <div class="{{item.flags[2]}}">{{item.flags[2]}}</div>
+          <div class="{{item.flags[3]}}">{{item.flags[3]}}</div>
+        </div>
       </li>
     </ul>
   </div>
