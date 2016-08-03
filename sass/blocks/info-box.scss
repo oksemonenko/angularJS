@@ -1,4 +1,5 @@
 .info-box {
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -7,6 +8,10 @@
   padding: 20px;
   background-color: lightgray;
   box-sizing: border-box;
+
+  &--active {
+    visibility: visible;
+  }
 }
 
 .info-box__title {
@@ -16,11 +21,13 @@
 
 .info-box__name {
   display: flex;
+  min-height: 30px;
 }
 
 .info-box__flags {
   display: flex;
   justify-content: space-between;
+  min-height: 30px;
 }
 
 .info-box__text {

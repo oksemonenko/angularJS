@@ -36,6 +36,10 @@
   background-color: lightgreen;
   box-sizing: border-box;
   cursor: pointer;
+
+  &--active {
+    background-color: lightcyan;
+  }
 }
 
 .items__item-name {
@@ -50,3 +54,4 @@
   justify-content: flex-end;
   width: 50%;
 }
+
