@@ -5,196 +5,50 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="app" ng-controller="ItemCtrl as ctrl">
-  <div class="sort-1">
-    <label>Sort:
-      <input type="checkbox" id="sort" ng-model="item" ng-change="ctrl.sortByName()">
-    </label>
-    <input type="text" ng-model="name" placeholder="Text filter">
-    <ul>
-      <li ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="ctrl.clickItem(item)">
-        <p>Имя: {{item.name}}</p>
-        <!--<p>Свойства: {{item.flags[0]}}</p>-->
-        <!--<p ng-bind="item.flags[0]"></p>-->
-        <!--<p ng-bind="item.flags[1]"></p>-->
-        <!--<p ng-bind="item.flags[2]"></p>-->
-        <!--<p ng-bind="item.flags[3]"></p>-->
-      </li>
-    </ul>
-  </div>
-  <div>{{ctrl.msg}}</div>
-</div>
-<div ng-controller="WineCtrl as ctrl">
-  <h3>Categories</h3>
-  <div class="category" ng-repeat="category in ctrl.getCategories()">
-    <label>
-      <input type="checkbox" ng-model="ctrl.filterCategory[category]" />
-      {{ category }}
-    </label>
-  </div>
-  <hr />
-  <!--<div class="country" ng-repeat="country in ctrl.getCountries()">-->
-  <!--<label>-->
-  <!--<input type="checkbox" ng-model="ctrl.filterCountry[country]" />-->
-  <!--{{ country }}-->
-  <!--</label>-->
-  <!--</div>-->
-  <!--<hr />-->
-  <h3>Available Wines</h3>
-  <div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategory) as filteredWines">
-    <div ng-click="clickWine(wine)">
-      {{ wine.name }} <i>({{ wine.category }})</i>
-      <b>{{ wine.country }}</b>
+<div class="wrapper" ng-controller="ClickCtrl as mainCtrl">
+  <div class="app" ng-controller="ItemCtrl as ctrl">
+    <div class="sort-1">
+      <label>Sort:
+        <input type="checkbox" id="sort" ng-model="item" ng-change="ctrl.sortByName()">
+      </label>
+      <input type="text" ng-model="name" placeholder="Text filter">
+      <ul>
+        <li ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="mainCtrl.clickItem(item)">
+          <p>Имя: {{item.name}}</p>
+          <p ng-repeat="flag in item.flags">
+          <p>{{item.flags[0]}}</p>
+          <p>{{item.flags[1]}}</p>
+          <p>{{item.flags[2]}}</p>
+          <p>{{item.flags[3]}}</p>
+        </li>
+      </ul>
     </div>
-    <!--<div ng-show="showBlock">-->
-    <!--{{ wine.name }}-->
-    <!--</div>-->
+    <!--<div>{{ctrl.msg}}</div>-->
   </div>
-  <!--<div>{{msg}}</div>-->
-  <hr />
-  <b>Number of results: {{ filteredWines.length }}</b>
+  <div>{{mainCtrl.msg}}</div>
+  <div ng-controller="FlagsCtrl as ctrl">
+    <h3>Flags</h3>
+    <div class="flags" ng-repeat="flag in ctrl.getFlags()">
+      <label>
+        <input type="checkbox" ng-model="ctrl.filterFlags[flag]" />
+        {{ flag }}
+      </label>
+    </div>
+    <hr />
+    <h3>Available Items</h3>
+    <div ng-repeat="item in (ctrl.items | filter:ctrl.filterByFlags) as filteredItems" ng-click="mainCtrl.clickItem(item)">
+        <b>{{ item.name }}</b>
+        <p ng-repeat="flag in item.flags">
+        <p>{{item.flags[0]}}</p>
+        <p>{{item.flags[1]}}</p>
+        <p>{{item.flags[2]}}</p>
+        <p>{{item.flags[3]}}</p>
+    </div>
+  </div>
 </div>
-<!--<div class="app" ng-controller="filterController as Ctrl">-->
-  <!--<div class="sort-2">-->
-    <!--Filters:-->
-    <!--<label>-->
-      <!--Flower-->
-      <!--<input type="checkbox" id="filter-flower" name="filter-flower" ng-model="item" ng-change="getFilteredItems()">-->
-    <!--</label>-->
-    <!--<label>-->
-      <!--Sun-->
-      <!--<input type="checkbox" id="filter-sun" name="filter-sun" ng-model="item.flags[1]">-->
-    <!--</label>-->
-    <!--<label>-->
-      <!--Heart-->
-      <!--<input type="checkbox" id="filter-heart" name="filter-heart" ng-model="item.flags[2]">-->
-    <!--</label>-->
-    <!--<label>-->
-      <!--Flash-->
-      <!--<input type="checkbox" id="filter-flash" name="filter-flash" ng-model="item.flags[3]">-->
-    <!--</label>-->
-    <!--<ul>-->
-      <!--<li ng-repeat="item in items">-->
-        <!--<p>Имя: {{item.name}}</p>-->
-        <!--<p ng-repeat="flag in item.flags">-->
-          <!--<p>{{item.flags[0]}}</p>-->
-          <!--<p>{{item.flags[1]}}</p>-->
-          <!--<p>{{item.flags[2]}}</p>-->
-          <!--<p>{{item.flags[3]}}</p>-->
-        <!--</p>-->
-        <!--&lt;!&ndash;<p>Свойства: {{item.flags[0]}}</p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p ng-bind="item.flags[0]"></p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p ng-bind="item.flags[1]"></p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p ng-bind="item.flags[2]"></p>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p ng-bind="item.flags[3]"></p>&ndash;&gt;-->
-      <!--</li>-->
-    <!--</ul>-->
-  <!--</div>-->
-<!--</div>-->
 <script src="js/lib/angular.min.js"></script>
-<!--<script type="text/javascript">-->
-  <!--angular.module('myApp', []);-->
-<!--</script>-->
 <script src="js/controllers/ItemCtrl.js"></script>
-<script src="js/controllers/WineCtrl.js"></script>
+<script src="js/controllers/FlagsCtrl.js"></script>
+<script src="js/controllers/ClickCtrl.js"></script>
 </body>
 </html>
-
-<!--&lt;!&ndash;<div ng-controller="itemController">&ndash;&gt;-->
-  <!--&lt;!&ndash;<p style="color: red">Название: {{item.name}}</p>&ndash;&gt;-->
-  <!--&lt;!&ndash;<div ng-controller="itemController">&ndash;&gt;-->
-    <!--&lt;!&ndash;<p>Название: {{item.name}}</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p>Цена: {{item.flags[2]}}</p>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--<script src="js/lib/angular.min.js"></script>-->
-<!--<script type="text/javascript">-->
-<!--angular.module('myApp', []);-->
-<!--</script>-->
-<!--<script src="js/controllers/ItemCtrl.js"></script>-->
-<!--<script src="js/controllers/filterController.js"></script>-->
-<!--</body>-->
-<!--</html>-->
-<!--<!doctype html>-->
-<!--<html ng-app="myApp">-->
-<!--<head>-->
-  <!--<meta charset="utf-8">-->
-  <!--<link rel="stylesheet" href="css/style.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div ng-controller="WineCtrl as ctrl">-->
-  <!--<h3>Categories</h3>-->
-  <!--<div ng-repeat="flags in ctrl.getCategories()">-->
-    <!--<label>-->
-      <!--<input type="checkbox" ng-model="ctrl.filter[flags]" />-->
-      <!--{{ flags }}-->
-    <!--</label>-->
-  <!--</div>-->
-  <!--Filters:-->
-  <!--<label>-->
-    <!--Flower-->
-    <!--<input type="checkbox" id="filter-flower" name="filter-flower" ng-model="ctrl.filter[flags]">-->
-  <!--</label>-->
-  <!--<label>-->
-    <!--Sun-->
-    <!--<input type="checkbox" id="filter-sun" name="filter-sun" ng-model="item.flags[1]">-->
-  <!--</label>-->
-  <!--<label>-->
-    <!--Heart-->
-    <!--<input type="checkbox" id="filter-heart" name="filter-heart" ng-model="item.flags[2]">-->
-  <!--</label>-->
-  <!--<label>-->
-    <!--Flash-->
-    <!--<input type="checkbox" id="filter-flash" name="filter-flash" ng-model="item.flags[3]">-->
-  <!--</label>-->
-  <!--<hr />-->
-  <!--<h3>Available Wines</h3>-->
-  <!--<div ng-repeat="item in (ctrl.items | filter:ctrl.filterByCategory) as filteredWines">-->
-    <!--{{ item.name }} <i>({{ item.flags }})</i>-->
-  <!--</div>-->
-  <!--<hr />-->
-  <!--<b>Number of results: {{ filteredWines.length }}</b>-->
-<!--</div>-->
-
-
-<!--<!doctype html>-->
-<!--<html ng-app="myApp">-->
-<!--<head>-->
-  <!--<meta charset="utf-8">-->
-  <!--<link rel="stylesheet" href="css/style.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<div ng-controller="WineCtrl as ctrl">-->
-  <!--<h3>Categories</h3>-->
-  <!--<div class="category" ng-repeat="category in ctrl.getCategories()">-->
-    <!--<label>-->
-      <!--<input type="checkbox" ng-model="ctrl.filterCategory[category]" />-->
-      <!--{{ category }}-->
-    <!--</label>-->
-  <!--</div>-->
-  <!--<hr />-->
-  <!--&lt;!&ndash;<div class="country" ng-repeat="country in ctrl.getCountries()">&ndash;&gt;-->
-    <!--&lt;!&ndash;<label>&ndash;&gt;-->
-      <!--&lt;!&ndash;<input type="checkbox" ng-model="ctrl.filterCountry[country]" />&ndash;&gt;-->
-      <!--&lt;!&ndash;{{ country }}&ndash;&gt;-->
-    <!--&lt;!&ndash;</label>&ndash;&gt;-->
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--&lt;!&ndash;<hr />&ndash;&gt;-->
-  <!--<h3>Available Wines</h3>-->
-  <!--<div ng-repeat="wine in (ctrl.wines | filter:ctrl.filterByCategory) as filteredWines">-->
-    <!--<div ng-click="clickWine(wine)">-->
-      <!--{{ wine.name }} <i>({{ wine.category }})</i>-->
-      <!--<b>{{ wine.country }}</b>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;<div ng-show="showBlock">&ndash;&gt;-->
-      <!--&lt;!&ndash;{{ wine.name }}&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--</div>-->
-  <!--<div>{{msg}}</div>-->
-  <!--<hr />-->
-  <!--<b>Number of results: {{ filteredWines.length }}</b>-->
-<!--</div>-->
-<!--<script src="js/lib/angular.min.js"></script>-->
-<!--<script src="js/controllers/WineCtrl.js"></script>-->
-<!--</body>-->
-<!--</html>-->
