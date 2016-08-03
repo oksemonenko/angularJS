@@ -47,6 +47,9 @@
 		// Functions - Definitions
 		function clickItem(item) {
 			self.msg = "Clicked: " + item.name;
+			self.info = "Info";
+			self.name = "Item: " + item.name;
+			self.flags = "Flags: " + item.flags;
 		}
 	}
 }());

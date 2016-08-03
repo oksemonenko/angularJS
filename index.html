@@ -6,44 +6,49 @@
 </head>
 <body>
 <div class="wrapper" ng-controller="ClickCtrl as mainCtrl">
-  <div class="app" ng-controller="ItemCtrl as ctrl">
-    <div class="sort-1">
+  <div class="items-left" ng-controller="ItemCtrl as ctrl">
+    <div class="filters">
       <label>Sort:
         <input type="checkbox" id="sort" ng-model="item" ng-change="ctrl.sortByName()">
       </label>
       <input type="text" ng-model="name" placeholder="Text filter">
-      <ul>
-        <li ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="mainCtrl.clickItem(item)">
-          <p>Имя: {{item.name}}</p>
-          <p ng-repeat="flag in item.flags">
-          <p>{{item.flags[0]}}</p>
-          <p>{{item.flags[1]}}</p>
-          <p>{{item.flags[2]}}</p>
-          <p>{{item.flags[3]}}</p>
-        </li>
-      </ul>
     </div>
-    <!--<div>{{ctrl.msg}}</div>-->
-  </div>
-  <div>{{mainCtrl.msg}}</div>
-  <div ng-controller="FlagsCtrl as ctrl">
-    <h3>Flags</h3>
-    <div class="flags" ng-repeat="flag in ctrl.getFlags()">
-      <label>
-        <input type="checkbox" ng-model="ctrl.filterFlags[flag]" />
-        {{ flag }}
-      </label>
-    </div>
-    <hr />
-    <h3>Available Items</h3>
-    <div ng-repeat="item in (ctrl.items | filter:ctrl.filterByFlags) as filteredItems" ng-click="mainCtrl.clickItem(item)">
-        <b>{{ item.name }}</b>
+    <ul>
+      <li ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="mainCtrl.clickItem(item)">
+        <b>{{item.name}}</b>
         <p ng-repeat="flag in item.flags">
-        <p>{{item.flags[0]}}</p>
-        <p>{{item.flags[1]}}</p>
-        <p>{{item.flags[2]}}</p>
-        <p>{{item.flags[3]}}</p>
+        <span>{{item.flags[0]}}</span>
+        <span>{{item.flags[1]}}</span>
+        <span>{{item.flags[2]}}</span>
+        <span>{{item.flags[3]}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="info-box">
+    <h2>{{mainCtrl.info}}</h2>
+    <p>{{mainCtrl.name}}</p>
+    <p>{{mainCtrl.flags}}</p>
+  </div>
+  <div class="items-left" ng-controller="FlagsCtrl as ctrl">
+    <div class="filters">
+      <p>Filters:</p>
+      <div class="filters__flags" ng-repeat="flag in ctrl.getFlags()">
+        <label>
+          <input type="checkbox" ng-model="ctrl.filterFlags[flag]" />
+          {{ flag }}
+        </label>
+      </div>
     </div>
+    <ul>
+      <li ng-repeat="item in (ctrl.items | filter:ctrl.filterByFlags) as filteredItems" ng-click="mainCtrl.clickItem(item)">
+          <b>{{ item.name }}</b>
+          <p ng-repeat="flag in item.flags">
+          <span>{{item.flags[0]}}</span>
+          <span>{{item.flags[1]}}</span>
+          <span>{{item.flags[2]}}</span>
+          <span>{{item.flags[3]}}</span>
+      </li>
+    </ul>
   </div>
 </div>
 <script src="js/lib/angular.min.js"></script>
