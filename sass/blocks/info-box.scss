@@ -1,4 +1,38 @@
 .info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 25%;
+  height: 200px;
+  padding: 20px;
   background-color: lightgray;
+  box-sizing: border-box;
+}
+
+.info-box__title {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.info-box__name {
+  display: flex;
+}
+
+.info-box__flags {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-box__text {
+  margin-right: 10px;
+}
+
+.info-box__item-name {
+  width: 70%;
+  text-align: center;
+}
+
+.info-box__item-flags {
+  display: flex;
+  width: 70%;
 }

@@ -1,5 +1,6 @@
 .filters {
   display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
@@ -11,10 +12,6 @@
   margin-right: 10px;
 }
 
-.filters__flags {
-  margin-top: 15px;
-}
-
 .filters__flag {
   display: block;
   width: 30px;
@@ -24,18 +21,70 @@
   cursor: pointer;
 
   &--sun {
-    background: beige url("../img/icons/sun.svg") no-repeat center;
+    background: beige url("../img/icons/sun-gray.svg") no-repeat center;
   }
 
   &--heart {
-    background: beige url("../img/icons/heart.svg") no-repeat center;
+    background: beige url("../img/icons/heart-gray.svg") no-repeat center;
   }
 
   &--flower {
-    background: beige url("../img/icons/flower.svg") no-repeat center;
+    background: beige url("../img/icons/flower-gray.svg") no-repeat center;
   }
 
   &--flash {
-    background: beige url("../img/icons/flash.svg") no-repeat center;
+    background: beige url("../img/icons/flash-gray.svg") no-repeat center;
   }
+}
+
+.filters__flag-input--sun:checked ~ .filters__flag {
+  background: beige url("../img/icons/sun.svg") no-repeat center;
+}
+
+.filters__flag-input--heart:checked ~ .filters__flag {
+  background: beige url("../img/icons/heart.svg") no-repeat center;
+}
+
+.filters__flag-input--flower:checked ~ .filters__flag{
+  background: beige url("../img/icons/flower.svg") no-repeat center;
+}
+
+.filters__flag-input--flash:checked ~ .filters__flag{
+  background: beige url("../img/icons/flash.svg") no-repeat center;
+}
+
+.filters__sort {
+  margin-right: 20px;
+  padding-top: 10px;
+}
+
+.filters__sort-label {
+  position: relative;
+  padding-right: 40px;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: beige;
+  }
+}
+
+.filters__sort-input:checked ~ .filters__sort-label::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: 7px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: saddlebrown;
+}
+
+.filters__text-input {
+  padding: 5px;
 }
