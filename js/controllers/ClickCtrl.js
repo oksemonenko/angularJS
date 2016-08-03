@@ -5,26 +5,23 @@
 	module('myApp').
 	controller('ClickCtrl', ClickCtrl);
 
-// Functions - Definitions
+/**Контроллер, который выводит информацию
+ *  по текущему выбранному элементу любого списка
+ */
 	function ClickCtrl() {
-		// Variables - Private
+
 		var self = this;
 		var selectedItem;
 
-		// Variables - Public
-		self.items = __itemListData;
-		// Functions - Public
-		self.clickItem = clickItem;
-		self.clickLi = clickLi;
-		self.highlight = highlight;
+		self.items = __itemsListData;
 
-		// Functions - Definitions
+		self.clickItem = clickItem;
+		self.clickElement = clickElement;
+		self.markActiveElement = markActiveElement;
+
+		//Функция, которая выводит информацию в отдельный блок
 		function clickItem(item) {
-			self.msg = "Clicked: " + item.name;
-			self.info = "Info";
-			self.name = "Name : ";
 			self.itemName = item.name;
-			self.flags = "Flags : ";
 			self.flag1 = item.flags[0];
 			self.flag2 = item.flags[1];
 			self.flag3 = item.flags[2];
@@ -32,19 +29,20 @@
 			self.class = "active";
 		}
 
-		function clickLi(event) {
+		//Функция, которая отслеживает событие клика по элементу списка
+		function clickElement(event) {
 			var target = event.target;
 			while (target != self) {
 				if (target.tagName == 'LI') {
-					highlight(target);
+					markActiveElement(target);
 					return;
 				}
 				target = target.parentNode;
-				highlight(target);
+				markActiveElement(target);
 			}
 		}
-
-		function highlight(node) {
+		//Функция, которая помечает активный элемент списка
+		function markActiveElement(node) {
 			if (selectedItem) {
 				selectedItem.classList.remove('items__item--active');
 			}

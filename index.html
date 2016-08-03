@@ -15,9 +15,9 @@
       </div>
       <input class="filters__text-input" type="text" ng-model="name" placeholder="Text filter">
     </div>
-    <ul class="items__list" ng-click="mainCtrl.clickLi($event)">
+    <ul class="items__list" ng-click="mainCtrl.clickElement($event)">
       <li class="items__item" ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="mainCtrl.clickItem(item)">
-        <b class="items__item-name">{{item.name}}</b>
+        <p class="items__item-name">{{item.name}}</p>
         <div class="items__item-flags">
           <div class="{{item.flags[0]}}">{{item.flags[0]}}</div>
           <div class="{{item.flags[1]}}">{{item.flags[1]}}</div>
@@ -28,13 +28,13 @@
     </ul>
   </div>
   <div class="info-box  info-box--{{mainCtrl.class}}">
-    <h2 class="info-box__title">{{mainCtrl.info}}</h2>
+    <h2 class="info-box__title">Info</h2>
     <div class="info-box__name">
-      <p class="info-box__text">{{mainCtrl.name}}</p>
+      <p class="info-box__text">Name: </p>
       <p class="info-box__item-name">{{mainCtrl.itemName}}</p>
     </div>
     <div class="info-box__flags">
-      <p class="info-box__text">{{mainCtrl.flags}}</p>
+      <p class="info-box__text">Flags: </p>
       <div class="info-box__item-flags">
         <p class="{{mainCtrl.flag1}}">{{mainCtrl.flag1}}</p>
         <p class="{{mainCtrl.flag2}}">{{mainCtrl.flag2}}</p>
@@ -52,12 +52,9 @@
         <label class="filters__flag  filters__flag--{{ flag }}" for="filter-flag--{{ flag }}">{{ flag }}</label>
       </div>
     </div>
-    <ul class="items__list" id="items-list" ng-click="mainCtrl.clickLi($event)">
+    <ul class="items__list" id="items-list" ng-click="mainCtrl.clickElement($event)">
       <li class="items__item" ng-repeat="item in (ctrl.items | filter:ctrl.filterByFlags) as filteredItems" ng-click="mainCtrl.clickItem(item)">
-        <b class="items__item-name">
-          <!--ng-class="mainCtrl.questClass"-->
-          <!--ng-click="mainCtrl.changeClass($event)"-->
-          {{item.name}}</b>
+        <p class="items__item-name">{{item.name}}</p>
         <div class="items__item-flags">
           <div class="{{item.flags[0]}}">{{item.flags[0]}}</div>
           <div class="{{item.flags[1]}}">{{item.flags[1]}}</div>
@@ -69,7 +66,7 @@
   </div>
 </div>
 <script src="js/lib/angular.min.js"></script>
-<script src="js/controllers/itemsList.js"></script>
+<script src="js/controllers/itemsListData.js"></script>
 <script src="js/controllers/ItemCtrl.js"></script>
 <script src="js/controllers/FlagsCtrl.js"></script>
 <script src="js/controllers/ClickCtrl.js"></script>

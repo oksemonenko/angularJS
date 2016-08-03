@@ -4,21 +4,22 @@
 	module('myApp').
 	controller('FlagsCtrl', FlagsCtrl);
 
-// Functions - Definitions
+/**Контроллер, который фильтрует список
+ *  по наличию свойств у элемента
+ */
 	function FlagsCtrl() {
-		// Variables - Private
 		var self = this;
 
-		// Variables - Public
 		self.filterFlags = {};
 
-		self.items = __itemListData;
-		// Functions - Public
+		self.items = __itemsListData;
+
 		self.filterByFlags = filterByFlags;
 		self.getFlags = getFlags;
 
-
-		// Functions - Definitions
+		/**Функция, которая фильтрует список элементов либо
+		 * выводит полный список при отсутствии выбранного фильтра
+		 */
 		function filterByFlags(item) {
 			return self.filterFlags[item.flags[0]] ||
 						 self.filterFlags[item.flags[1]] ||
@@ -27,6 +28,9 @@
 						 noFilter(self.filterFlags);
 		}
 
+		/**Функция, которая получает список свойств элементов
+		 *  для формирования списка фильтров
+		 */
 		function getFlags() {
 			var arrayOfItemObjects = (self.items || []);
 			var arrayOfArraysOfItemFlags = arrayOfItemObjects.map(function (item) {
@@ -43,11 +47,11 @@
 			return filteredArrayOfItemFlags;
 		}
 
+		//Функция, которая выводит весь список элементов
 		function noFilter(filterObj) {
 			return Object.
 			keys(filterObj).
 			every(function (key) { return !filterObj[key]; });
 		}
 	}
-
 }());

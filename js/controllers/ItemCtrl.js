@@ -3,20 +3,20 @@
 	module('myApp', []).
 	controller('ItemCtrl', ItemCtrl);
 
-// Functions - Definitions
+/**Контроллер, который сортирует и фильтрует список
+ * элементов по имени
+ */
 	function ItemCtrl() {
-		// Variables - Private
+
 		var self = this;
 
-		// Variables - Public
-		self.items = __itemListData;
+		self.items = __itemsListData;
 
-		// Functions - Public
 		self.sortByName = sortByName;
 
-		// Functions - Definitions
-
-
+		/**Функция сортировки в прямом порядке по алфавиту
+		 * и в обратном порядке
+		 */
 		function sortByName() {
 			var sort = document.getElementById("sort");
 

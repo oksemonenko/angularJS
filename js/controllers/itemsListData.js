@@ -1,4 +1,4 @@
-__itemListData = [
+__itemsListData = [
 	{
 		name: "cat",
 		flags: ["heart"]
