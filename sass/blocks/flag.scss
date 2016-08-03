@@ -1,0 +1,25 @@
+.flag {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  text-indent: -9999px;
+  //color: transparent;
+  //font-size: 0;
+  cursor: pointer;
+
+  &--sun {
+    background: beige url("../img/icons/sun.svg") no-repeat center;
+  }
+
+  &--heart {
+    background: beige url("../img/icons/heart.svg") no-repeat center;
+  }
+
+  &--flower {
+    background: beige url("../img/icons/flower.svg") no-repeat center;
+  }
+
+  &--flash {
+    background: beige url("../img/icons/flash.svg") no-repeat center;
+  }
+}

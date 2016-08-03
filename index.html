@@ -6,21 +6,20 @@
 </head>
 <body>
 <div class="wrapper" ng-controller="ClickCtrl as mainCtrl">
-  <div class="items-left" ng-controller="ItemCtrl as ctrl">
+  <div class="items  items--left" ng-controller="ItemCtrl as ctrl">
     <div class="filters">
       <label>Sort:
-        <input type="checkbox" id="sort" ng-model="item" ng-change="ctrl.sortByName()">
+        <input class="filters__checkbox" type="checkbox" id="sort" ng-model="item" ng-change="ctrl.sortByName()">
       </label>
       <input type="text" ng-model="name" placeholder="Text filter">
     </div>
-    <ul>
-      <li ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="mainCtrl.clickItem(item)">
+    <ul class="items__list">
+      <li class="items__item" ng-repeat="item in ctrl.items | orderBy:ctrl.sortparam | filter:{name}" ng-click="mainCtrl.clickItem(item)">
         <b>{{item.name}}</b>
-        <p ng-repeat="flag in item.flags">
-        <span>{{item.flags[0]}}</span>
-        <span>{{item.flags[1]}}</span>
-        <span>{{item.flags[2]}}</span>
-        <span>{{item.flags[3]}}</span>
+        <div class="flag  flag--{{item.flags[0]}}">{{item.flags[0]}}</div>
+        <div class="flag  flag--{{item.flags[1]}}">{{item.flags[1]}}</div>
+        <div class="flag  flag--{{item.flags[2]}}">{{item.flags[2]}}</div>
+        <div class="flag  flag--{{item.flags[3]}}">{{item.flags[3]}}</div>
       </li>
     </ul>
   </div>
@@ -29,24 +28,23 @@
     <p>{{mainCtrl.name}}</p>
     <p>{{mainCtrl.flags}}</p>
   </div>
-  <div class="items-left" ng-controller="FlagsCtrl as ctrl">
+  <div class="items  items--right" ng-controller="FlagsCtrl as ctrl">
     <div class="filters">
-      <p>Filters:</p>
+      <p class="filters__text">Filters:</p>
       <div class="filters__flags" ng-repeat="flag in ctrl.getFlags()">
-        <label>
-          <input type="checkbox" ng-model="ctrl.filterFlags[flag]" />
+        <label class="filters__flag  filters__flag--{{ flag }}">
+          <input class="filters__checkbox" type="checkbox" ng-model="ctrl.filterFlags[flag]">
           {{ flag }}
         </label>
       </div>
     </div>
-    <ul>
-      <li ng-repeat="item in (ctrl.items | filter:ctrl.filterByFlags) as filteredItems" ng-click="mainCtrl.clickItem(item)">
-          <b>{{ item.name }}</b>
-          <p ng-repeat="flag in item.flags">
-          <span>{{item.flags[0]}}</span>
-          <span>{{item.flags[1]}}</span>
-          <span>{{item.flags[2]}}</span>
-          <span>{{item.flags[3]}}</span>
+    <ul class="items__list">
+      <li class="items__item" ng-repeat="item in (ctrl.items | filter:ctrl.filterByFlags) as filteredItems" ng-click="mainCtrl.clickItem(item)">
+        <b>{{item.name}}</b>
+        <div class="flag  flag--{{item.flags[0]}}">{{item.flags[0]}}</div>
+        <div class="flag  flag--{{item.flags[1]}}">{{item.flags[1]}}</div>
+        <div class="flag  flag--{{item.flags[2]}}">{{item.flags[2]}}</div>
+        <div class="flag  flag--{{item.flags[3]}}">{{item.flags[3]}}</div>
       </li>
     </ul>
   </div>

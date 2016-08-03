@@ -1,0 +1,21 @@
+.items {
+  width: 30%;
+  background-color: lightskyblue;
+}
+
+.items__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.items__item {
+  display: flex;
+  
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+  padding-left: 20px;
+  background-color: lightgreen;
+}
