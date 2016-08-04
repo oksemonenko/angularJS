@@ -1,8 +1,9 @@
-(function () {'use strict';
+(function () {
+	"use strict";
 
 	angular.
-	module('myApp').
-	controller('FlagsCtrl', FlagsCtrl);
+	module("itemsFlagsApp").
+	controller("FlagsCtrl", FlagsCtrl);
 
 /**Контроллер, который фильтрует список
  *  по наличию свойств у элемента

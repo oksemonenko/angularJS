@@ -1,7 +1,8 @@
-(function () { "use strict";
+(function () {
+	"use strict";
 	angular.
-	module('myApp', []).
-	controller('ItemCtrl', ItemCtrl);
+	module("itemsFlagsApp", []).
+	controller("ItemCtrl", ItemCtrl);
 
 /**Контроллер, который сортирует и фильтрует список
  * элементов по имени
@@ -26,6 +27,5 @@
 				self.sortparam = "-name";
 			}
 		}
-
 	}
 }());

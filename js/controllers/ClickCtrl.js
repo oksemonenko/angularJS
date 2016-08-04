@@ -1,9 +1,9 @@
 (function () {
-	'use strict';
+	"use strict";
 
 	angular.
-	module('myApp').
-	controller('ClickCtrl', ClickCtrl);
+	module("itemsFlagsApp").
+	controller("ClickCtrl", ClickCtrl);
 
 /**Контроллер, который выводит информацию
  *  по текущему выбранному элементу любого списка
@@ -33,7 +33,7 @@
 		function clickElement(event) {
 			var target = event.target;
 			while (target != self) {
-				if (target.tagName == 'LI') {
+				if (target.tagName == "LI") {
 					markActiveElement(target);
 					return;
 				}
@@ -44,10 +44,10 @@
 		//Функция, которая помечает активный элемент списка
 		function markActiveElement(node) {
 			if (selectedItem) {
-				selectedItem.classList.remove('items__item--active');
+				selectedItem.classList.remove("items__item--active");
 			}
 			selectedItem = node;
-			selectedItem.classList.add('items__item--active');
+			selectedItem.classList.add("items__item--active");
 		}
 	}
 }());
